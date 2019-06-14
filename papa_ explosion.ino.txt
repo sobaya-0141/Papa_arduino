@@ -1,0 +1,25 @@
+#define INFRARED_PIN 13
+#define LOOP_COUNT 100
+
+void setup(){
+  Serial.begin(9600);
+}
+
+void loop(){
+  int distance;
+  distance = readInfrared();
+  Serial.println(distance);
+  // TODO 未反応の時を判定したら処理追加
+}
+
+int readInfrared(){
+  long sum;
+  int i;
+
+  sum = 0;
+  for (i=0; i < LOOP_COUNT; i++) {
+    sum += analogRead(INFRARED_PIN);
+  }
+
+  return sum / LOOP_COUNT
+}
